@@ -14,9 +14,13 @@ public class ClimaController {
     public ClimaController(ClimaService climaService) {
         this.climaService = climaService;
     }
+    @GetMapping("/clima")
+    public String climaPadrao() {
+        return climaService.buscarClima("Belo Horizonte");
+    }
 
     @GetMapping("/clima/{cidade}")
-    public String clima(@PathVariable String cidade) {
+    public String climaPorCidade(@PathVariable String cidade) {
         return climaService.buscarClima(cidade);
     }
 }
